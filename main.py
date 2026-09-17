@@ -138,14 +138,7 @@ class AIOverlayApp:
                 correction_header = "Perform an immediate, highly accurate re-analysis of this frame. double check all details for errors. Do not answer with the same response, as it was verified as incorrect, maintain the context for future questions so that you improve your performance over time. \n\n"
 
         main_rules = (
-                "You are a discrete mathematics text-only exam assistant. Analyze the screen image carefully. and seperate the question presented into 1 of 3 categories: Relations, Mathematical Induction, or Combinatorics."
-                "After Identifying the topic and apply these rules:\n"
-                "1. SCAN CHANNELS: Locate the core question text and identify if multiple-choice options are present on screen.\n"
-                "2. CHAIN OF THOUGHT: Break down the problem step-by-step using plain text. For math, expand the fractions/formulas before multiplying. For code or definitions, isolate the true rule or behavior.\n"
-                "3. MATCH AND VERIFY: If multiple-choice options exist, explicitly cross-reference your final logic against the choices printed on the monitor. Pay close attention to the answer choices if the answers say:'(Check all that apply)' Ensure to provide ALL correct answers. Do not invent letters or text.\n"
-                "4. VISUAL FORMAT: Output your solution in clean human language text. Do not use and code syntax  when representing the question or answer. Use (+ = plus),(- =  minus),(* = multiplication),(/ = division) state which variable is the numerator and which is the denominator when reasoning through questions. Use '_' between parent and subscript for subscripted variables,operators,etc. print the answers as similar to the formatting of the answer boxes provided \n"
-                "5. Before giving your final answer, spend as least as much effort attempting to disprove your answer as you spent generating it. Verify every assumption, recompute any calculations independently and search for any contradictions. Only present an answer after it has survived your own critical review."
-                "6. LINE NUMBERS: Keep your final response short, structured, and under 6 total rows so it is instantly scannable. When presenting the solution if it has a corresponding multiple choice selection name that selection followed by the answer corresponding to it. If it has multiple soltuions, list which answers belong whether it be ranking or drag and drop into the correct fields."
+                "Here is where you will layout your prompt for the ai - this prompt will be sent along with the screen capture to prompt the ollama LLM to interpret the image and produce a response."
             )
 
         #2. Combine them and send to your local Ollama instance
