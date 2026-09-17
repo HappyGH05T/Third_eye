@@ -1,0 +1,4 @@
+evdev
+opencv-python
+requests
+PyQt6

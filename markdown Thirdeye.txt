@@ -1,0 +1,26 @@
+markdown# Thirdeye
+
+A low-latency, hardware-triggered Linux desktop utility that intercepts raw global kernel inputs to capture video frames and stream real-time AI contextual insights directly over active user workspaces.
+
+## 🛠️ System Architecture
+
+Thirdeye isolates heavy visual processing and network overhead from the primary application threads to prevent system lag or interface blocking:
+
+* **Hardware Input Thread (`evdev`):** Operates at the Linux kernel level via a non-blocking raw event loop. It captures global keystrokes from a designated macropad input stream (`/dev/input/`) without requiring or taking desktop focus.
+* **Main UI Thread (`PyQt6`):** Manages a hardware-accelerated, transparent heads-up display (HUD) overlay that can be dynamically scaled, shifted, or toggled instantly via the hardware macro keys.
+* **Asynchronous Vision Worker:** When a capture event is fired, an isolated background thread kicks off `OpenCV` to capture camera frames and handles the outbound multi-modal REST transaction asynchronously, keeping the user interface completely fluid.
+
+## 🚀 Features
+
+* **Low-Level Interception:** Uses `evdev` to capture physical device inputs globally.
+* **Offline Multimodal Execution:** Interfaces with a local, private edge instance of `Qwen2.5-VL` running on Ollama.
+* **Transparent HUD Overlay:** A clean frameless visual layer configured via PyQt6 styling sheets.
+* **Asynchronous Lifecycles:** Parallel processing structure prevents network and camera API calls from blocking input polling or UI rendering loops.
+
+## 📋 Dependencies
+
+The core environment leverages the following libraries:
+* `evdev` - Linux input subsystem event interface mapping
+* `opencv-python` - Real-time computer vision frame acquisition
+* `requests` - Network communication and JSON payload handling
+* `PyQt6` - Hardware-accelerated native overlay rendering
